@@ -372,7 +372,11 @@ class ComposerStaticInit478e6673329a44b5f3509c17ca3bef21
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\Page\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Page/PageController.php',
+=======
+        'App\\Http\\Controllers\\HomePostController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomePostController.php',
+>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -381,7 +385,11 @@ class ComposerStaticInit478e6673329a44b5f3509c17ca3bef21
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
         'App\\Page' => __DIR__ . '/../..' . '/app/Page.php',
+=======
+        'App\\Like' => __DIR__ . '/../..' . '/app/Like.php',
+>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

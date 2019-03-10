@@ -15,7 +15,11 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\Page\\PageController' => $baseDir . '/app/Http/Controllers/Page/PageController.php',
+=======
+    'App\\Http\\Controllers\\HomePostController' => $baseDir . '/app/Http/Controllers/HomePostController.php',
+>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -24,7 +28,11 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
     'App\\Page' => $baseDir . '/app/Page.php',
+=======
+    'App\\Like' => $baseDir . '/app/Like.php',
+>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
     'App\\Post' => $baseDir . '/app/Post.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
