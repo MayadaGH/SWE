@@ -26,7 +26,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-   
+
     <!-- Load an icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -38,22 +38,25 @@
             <div class="topnav-right">
                 <a href="{{url('home')}}"> <i class="fa fa-fw fa-home"></i>  Home</a>
                 <a href="{{url('CreatePost')}}"><i class="fa fa-pencil"></i>Add Post</a>
+                <!--- Pages dropdown -------------------------------------------------------->
+                <a href="{{url('pages')}}"> <i class="fa fa-fw fa-home"></i>Pages</a>
+                <!---End Page dropdown  ------------------------------------------------------->
                 <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
                 <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
             </div>
             @guest
         <div class="topnav-right">
         <a class="active" href="{{ route('login') }}" > {{ __('Login') }}</a>
-                         
+
                             @if (Route::has('register'))
                                     <a   href="{{ route('register') }}">{{ __('Register') }}</a>
 
                             @endif
                         @else
-                           
-                                    <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
+
+                                    <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                       <img src="{{ Auth::user()->profile_photo }}" style="width:32px; height:32px;  border-radius:50%"> {{ Auth::user()->name }} <span class="caret"></span>
-                                    
+
                                     </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -67,12 +70,12 @@
                                         @csrf
                                     </form>
                                 </div>
-                           
+
                         @endguest
-       
+
 
         </div>
-        
+
         <main class="py-4">
             @yield('content')
         </main>

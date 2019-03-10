@@ -18,5 +18,15 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@ReadPost')->name('home');
-Route::get('/CreatePost','HomeController@CreatePost'); 
+Route::get('/CreatePost','HomeController@CreatePost');
 Route::Post('/CreatePost','HomeController@CreatePost');
+
+// Routes for PageController
+//Route::resources('pages', 'Page\PageController');
+Route::get('/pages', 'Page\PageController@index');
+Route::get('/pages/create', 'Page\PageController@create');
+Route::post('/pages', 'Page\PageController@store');
+Route::get('pages/{page}', 'Page\PageController@show');
+Route::get('pages/{page}/edit', 'Page\PageController@edit');
+Route::patch('pages/{page}', 'Page\PageController@update');
+Route::delete('pages/{page}', 'Page\PageController@destroy');
