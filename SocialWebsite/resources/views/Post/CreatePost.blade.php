@@ -7,7 +7,7 @@
     <p> Create Post </p> 
  </div>
 
-    <form action="CreatePost" method="POST" enctype="multipart/form-data">
+    <form action="{{route('home-post.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group"> 
             <a href="#" role="button"> 

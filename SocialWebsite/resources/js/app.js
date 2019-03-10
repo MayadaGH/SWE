@@ -1,3 +1,4 @@
+alert("Hello");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -31,3 +32,43 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app'
 });
+$(".like").on('click',function()
+{
+ alert("post_id");
+ /*$.ajax({
+
+   type: 'POST',
+   url: url,
+   data:{like_s:like_s,article_id:article_id,_token:token},
+   success: function(data){
+	if(data.is_like == 1)
+    {
+    $('*[article_id="'+ article_id +'_l"]').removeClass('btn-secondry').addClass('btn-success');
+    $('*[article_id="'+ article_id +'_d"]').removeClass('btn-danger').addClass('btn-secondry');
+
+    var cu_like = $('*[article_id="'+ article_id +'_l"]').find('.like_count').text();
+    var new_like= parseInt(cu_like) +1 ; 
+    $('*[article_id="'+ article_id +'_l"]').find('.like_count').text(new_like);
+
+     if(data.change_like == 1)
+     {
+    var cu_like = $('*[article_id="'+ article_id +'_d"]').find('.dislike_count').text();
+    var new_like= parseInt(cu_like) - 1 ; 
+    $('*[article_id="'+ article_id +'_d"]').find('.dislike_count').text(new_like);
+
+     }
+    }
+   
+
+	if(data.is_like == 0)
+    {
+    $('*[article_id="'+ article_id + '_l"]').removeClass('btn-success').addClass('btn-secondry');
+	var cu_like = $('*[article_id="'+ article_id +'_l"]').find('.like_count').text();
+    var new_like= parseInt(cu_like) - 1 ; 
+    $('*[article_id="'+ article_id +'_l"]').find('.like_count').text(new_like);
+   }} 
+  
+
+ });*/
+});
+

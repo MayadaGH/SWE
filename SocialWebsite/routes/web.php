@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomePostController@index')->name('home');
-Route::get('/CreatePost','HomePostController@CreatePost');
+Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
+
+Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
+
+Route::post('/home','HomeLikeController@store')->name('like');

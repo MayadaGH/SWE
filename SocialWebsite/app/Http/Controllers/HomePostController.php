@@ -5,29 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use Illuminate\Support\Facades\Validator;
+
 class HomePostController extends Controller
 {
-    public function Create_post(Request $request)
-    {
-        if($request->isMethod('POST'))
-    	{
+    // store = action
+    // create = view
+    public function create(){
+        return view('Post/CreatePost'); 
+    }
+    public function store(Request $request){
         $request->validate([
-        'body' => 'required',
-        'image' => 'required | mimes:jpeg,jpg,png | max:2048',
-        ]);
-        $post              = new Post(); 
+            'body' => 'required',
+            'image' => 'required | mimes:jpeg,jpg,png | max:2048',
+            ]);
+            $post              = new Post(); 
         $post->body        = $request->input('body');
         $post->user_id     = Auth::user()->id;
         $image             = $request->file('image'); 
-        $new_name = rand().'.'.$image->getClientOriginalExtension();
+        $new_name          = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path("image"),$image);
         $post->image    = $request->file('image');
         $post->save();
         return redirect(route('home'));
-        }
-        else
-        return view('Post/CreatePost'); 
     }
+   
     public function index()
     {
         $post = Post::all(); 
