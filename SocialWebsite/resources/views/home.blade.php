@@ -63,7 +63,10 @@
       <div class="row">
       
       <div class="col-sm-3 col-md-6">
-        <button type="button" class="like btn btn-light" style="width:420px"  post_id ="{{$art->id}}" ><i class="emoji {{$like_statu}}" ></i> Like</button>
+        <button type="button" class="like btn btn-light" style="width:420px"  post_id ="{{$art->id}}" >
+          <b> <span class="like_count">{{$like_count}}</span></b>
+          <i class="emoji {{$like_statu}}" ></i> Like
+        </button>
         
       </div>
       
@@ -91,9 +94,15 @@ $(document).on('click','.like',function()
    success: function(data){
     if(data.is_like == 1){
       $('*[post_id="'+ post_id +'"]').find('.emoji').removeClass('emoji far fa-thumbs-up').addClass('emoji fas fa-thumbs-up');
+      var cu_like = $('*[post_id="'+ post_id +'"]').find('.like_count').text();
+      var new_like= parseInt(cu_like) + 1 ; 
+      $('*[post_id="'+ post_id +'"]').find('.like_count').text(new_like);
     }
     else if(data.is_like == 0){
       $('*[post_id="'+ post_id +'"]').find('.emoji').removeClass('emoji fas fa-thumbs-up').addClass('emoji far fa-thumbs-up');;
+      var cu_like = $('*[post_id="'+ post_id +'"]').find('.like_count').text();
+      var new_like= parseInt(cu_like)- 1 ; 
+      $('*[post_id="'+ post_id +'"]').find('.like_count').text(new_like);
     }
   }
  });

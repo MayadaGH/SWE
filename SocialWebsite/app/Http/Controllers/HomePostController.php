@@ -12,7 +12,7 @@ class HomePostController extends Controller
     // store = action
     // create = view
     public function create(){
-        return view('Post/CreatePost'); 
+        return view('post/createpost'); 
     }
     public function store(Request $request){
         $request->validate([
