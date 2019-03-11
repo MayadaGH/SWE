@@ -13,7 +13,7 @@
     <label for="pageDescription">Description</label>
     <textarea class="form-control" name="description" id="pageDescription" rows="3">{{ $page['description'] }}</textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-success">Edit</button>
 </form>
 
 @endsection
