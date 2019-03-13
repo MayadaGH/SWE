@@ -50,6 +50,7 @@
                 <!---End Page dropdown  ------------------------------------------------------->
                 <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
                 <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+                <a href="{{url('/profile/settings')}}"><i class="fa fa-fw fa-envelope"></i> Profile</a>
             </div>
             @guest
         <div class="topnav-right">
@@ -61,7 +62,7 @@
                             @endif
                         @else
 
-                                    <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a href="/profile/settings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                       <img src="{{ Auth::user()->profile_photo }}" style="width:32px; height:32px;  border-radius:50%"> {{ Auth::user()->name }} <span class="caret"></span>
 
                                     </a>
