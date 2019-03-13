@@ -42,8 +42,8 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'page_name' => 'required|string|max:20|min:2',
-            'description' => 'required|string|max:255|min:20',
+            'page_name' => 'required|string|max:20|min:2|not_regex:/^\d+$/i',
+            'description' => 'required|string|max:255|min:20|not_regex:/^\d+$/i',
         ]);
         $attr = request(['page_name', 'description']);
         $attr['user_id'] = auth()->id();
@@ -83,8 +83,8 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         $request->validate([
-            'page_name' => 'required|string|max:20|min:2',
-            'description' => 'required|string|max:255|min:2',
+            'page_name' => 'required|string|max:20|min:2|not_regex:/^\d+$/i',
+            'description' => 'required|string|max:255|min:20|not_regex:/^\d+$/i',
         ]);
         $page->update(request(['page_name', 'description']));
 
