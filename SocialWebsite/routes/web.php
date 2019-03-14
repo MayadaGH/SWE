@@ -24,13 +24,14 @@ Auth::routes(['verify' => true]);
 
 // Routes for PageController
 //Route::resources('pages', 'Page\PageController');
-Route::get('/pages', 'Page\PageController@index');
-Route::get('/pages/create', 'Page\PageController@create');
-Route::post('/pages', 'Page\PageController@store');
-Route::get('pages/{page}', 'Page\PageController@show');
-Route::get('pages/{page}/edit', 'Page\PageController@edit');
-Route::patch('pages/{page}', 'Page\PageController@update');
-Route::delete('pages/{page}', 'Page\PageController@destroy');
+Route::resource('page', 'Page\PageController');
+// Route::get('/pages', 'Page\PageController@index');
+// Route::get('/pages/create', 'Page\PageController@create');
+// Route::post('/pages', 'Page\PageController@store')->name('pages');
+// Route::get('pages/{page}', 'Page\PageController@show');
+// Route::get('pages/{page}/edit', 'Page\PageController@edit');
+// Route::patch('pages/{page}', 'Page\PageController@update');
+// Route::delete('pages/{page}', 'Page\PageController@destroy');
 //=======
 Route::get('/home', 'HomePostController@index')->name('home');
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');

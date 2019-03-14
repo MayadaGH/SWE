@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Page;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +20,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::where('user_id', auth()->id())->get();
+        //$pages = Page::where('user_id', auth()->id())->get();
+        $pages = User::find(auth()->id())->pages;
         return view('/page/index', compact('pages'));
     }
 
@@ -47,8 +49,11 @@ class PageController extends Controller
         ]);
         $attr = request(['page_name', 'description']);
         $attr['user_id'] = auth()->id();
-        Page::create($attr);
-        return redirect('/pages');
+        if($page = Page::create($attr)){
+          return redirect(route('page.show', $page->id))->with('success', 'Successfuly created page');
+        }else{
+          return redirect(route('page.create'))->with('error', 'Failed to create a new page.');
+        }
     }
 
     /**
@@ -70,7 +75,11 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('/page/edit_page', compact('page'));
+        if($page->user_id == auth()->id()){
+          return view('/page/edit_page', compact('page'));
+        }else{
+          abort(403);
+        }
     }
 
     /**
@@ -99,7 +108,11 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        $page->delete();
-        return redirect('/pages');
+        if($page->user_id == auth()->id()){
+          $page->delete();
+          return redirect('/pages');
+        }else{
+          abort(403);
+        }
     }
 }

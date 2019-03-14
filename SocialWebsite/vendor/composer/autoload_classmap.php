@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\HomeLikeController' => $baseDir . '/app/Http/Controllers/HomeLikeController.php',
     'App\\Http\\Controllers\\HomePostController' => $baseDir . '/app/Http/Controllers/HomePostController.php',
     'App\\Http\\Controllers\\Page\\PageController' => $baseDir . '/app/Http/Controllers/Page/PageController.php',
+    'App\\Http\\Controllers\\Profile\\ProfileController' => $baseDir . '/app/Http/Controllers/Profile/ProfileController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
