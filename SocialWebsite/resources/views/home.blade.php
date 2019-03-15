@@ -12,6 +12,30 @@
            <img src="/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                       {{$art->user->name}}
             </a>
+       @if(Auth::user()->id==$art->user->id)
+       <div class="dropdown" style="float:right; margin-top:20px;">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete 
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li>
+              <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post"> 
+              {{ csrf_field() }}
+              <input type="hidden" name="post_id" value="{{$art->id}}">
+              <input type="submit" name="edit" value=" Edit"  class="btn btn-default">
+              </form> 
+          </li>
+          <li>
+          <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post"> 
+          {{ csrf_field() }}
+          <input type="hidden" name="post_id" value="{{$art->id}}">
+          <input type="submit" name="Delete" value="Delete" class="btn btn-default" >
+          </form>
+          </li>
+        </ul>
+      </div> 
+
+        @endif 
+
           </div>
 
     <div class="thumbnail" style="margin-left: 10px;" >
@@ -28,7 +52,7 @@
               <br>
             @endif
             <p style="margin-left: 660px;">
-          {{$art->created_at}}
+            {{$art->created_at}}
         </p>
      <a href='{{ "/read/".$art->id }}'>
         <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">

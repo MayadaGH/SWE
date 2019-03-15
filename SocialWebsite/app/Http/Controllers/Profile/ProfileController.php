@@ -15,24 +15,15 @@ class ProfileController extends Controller
     public function __construct(){
       $this->middleware('verified');
     }
-    public function index()
-    {   
-        return view('/profile/settings');
-    }
-    public function getprofiledata(){
+  
+    public function index(){
       $user=Auth::user();
-      return view('/profile/profile',compact('user'));
+      //return view('/profile/profile',);
+      $post = Post::all()->where('user_id',Auth::id());
+      $arr = array('post' =>$post);
+      return view('/profile/profile',$arr,compact('user'));
     }
-    public function updateprofile(Request $request)
-    { $ValidateData;
-      
-      /* 
-      $user = User::find(Auth::id());
-      $user->name = $request->input('firstname');
-      $user->email =$request->input('email');
-          $user->save(); */
-     return $request->input();
-     /* return Redirect::back(); */
-    }
+    
+   
 
 }
