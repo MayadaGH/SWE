@@ -28,7 +28,7 @@
               <br>
             @endif
             <p style="margin-left: 660px;">
-          {{$art->created_at}}
+            {{$art->created_at}}
         </p>
      <a href='{{ "/read/".$art->id }}'>
         <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">

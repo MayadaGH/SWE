@@ -27,8 +27,9 @@ class HomePostController extends Controller
         $post->user_id     = Auth::user()->id;
         $image             = $request->file('image');
         $new_name          = rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path("image"),$image);
-        $post->image    = $request->file('image');
+        $image->move(public_path("image"),$new_name);
+       
+        $post->image    = $new_name ;
         $post->save();
         return redirect(route('home'));
     }
