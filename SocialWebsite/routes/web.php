@@ -43,3 +43,7 @@ Route::post('/home','HomeLikeController@store')->name('like');
 
 //Routes For Profile Controller
 Route::get('/profile/settings','Profile\ProfileController@index');
+//Search Route
+Route::get('/search','searchController@getResults')->name('search.results');
+//get user profile
+Route::get('/user/{name}','Profile\profileController@getProfile')->name('profile.index');
