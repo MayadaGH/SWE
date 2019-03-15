@@ -34,11 +34,15 @@ Route::resource('page', 'Page\PageController');
 // Route::delete('pages/{page}', 'Page\PageController@destroy');
 //=======
 Route::get('/home', 'HomePostController@index')->name('home');
-Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 
+Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
+Route::post('/DeletePost','HomePostController@delete')->name('home-post.delete');
+Route::post('/showPost','HomePostController@show')->name('home-post.show');
+Route::post('/EditPost','HomePostController@edit')->name('home-post.edit');
 
 Route::post('/home','HomeLikeController@store')->name('like');
+
 //>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
 
 //Routes For Profile Controller

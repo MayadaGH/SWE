@@ -4,7 +4,7 @@
 <div class="container" id="cont" >
     
 <div id="cont2"> 
-    <p> Create Post </p> 
+    <p> Edit Post </p> 
  </div>
 
  @if ($errors->any())
@@ -16,22 +16,23 @@
         </ul>
     </div>
 @endif
-    <form action="{{route('home-post.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('home-post.edit')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group"> 
             <a href="#" role="button"> 
                 <img src="{{ Auth::user()->profile_photo }}" style="width:32px; height:32px;  border-radius:50%; margin:5px">  <span class="caret"></span>
             </a>
-                <input type="text" name="body" class="form-control" placeholder="What's Your Mind , {{ Auth::user()->name}}">
+                <input type="text" name="body" class="form-control" value="{{$post->body}}">
             @if ($errors->has('body'))
             <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('body') }}</strong>
             </span>
            @endif
                 </div>
+                <input type="hidden" name="post_id" value="{{$post->id}}">
                 <label id= "cont3" for="files" class="btn"> <i class="fa fa-picture-o" aria-hidden="true"></i> Photo</label>
-                <input id="files"  name="image"  style="visibility:hidden;" type="file" onchange="readURL(this);">
-                <img id="blah" src="#" alt="your image" />
+                <input id="files"  name="image" value="{{$post->image}}" style="visibility:hidden;" type="file" onchange="readURL(this);">
+                <img id="blah" src="/image/{{$post->image}}" alt="your image" width="500px"/>
             @if ($errors->has('image'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('image') }}</strong>
@@ -40,7 +41,7 @@
             <br>
             
         <br> 
-        <input type="submit" value="Share !" class="btn btn-primary" style="width:100px"/>
+        <input type="submit" value="Edit !" class="btn btn-primary" style="width:100px"/>
 	</form>
 <div>
 <script> 
