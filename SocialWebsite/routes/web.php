@@ -43,3 +43,7 @@ Route::post('/home','HomeLikeController@store')->name('like');
 
 //Routes For Profile Controller
 Route::get('/profile/settings','Profile\ProfileController@index');
+Route::post('/profile/settings','Profile\ProfileController@index');
+
+Route::get('/profile/profile','Profile\ProfileController@getprofiledata')->name('restore-profile-data');
+Route::post('/profile/profile','Profile\ProfileController@updateprofile')->name('update-profile-data');

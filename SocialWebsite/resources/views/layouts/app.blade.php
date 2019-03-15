@@ -59,7 +59,10 @@
                         </div>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{url('/profile/settings')}}"><i class="fas fa-user-alt"></i> Profile</a>
+                        <a class="nav-link" href="{{route('restore-profile-data')}}"><i class="fas fa-user-alt"></i> Profile</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{url('/profile/settings')}}"><i class="fas fa-users-cog"></i> Settings</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-search"></i> Search</a>

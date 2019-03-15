@@ -1,240 +1,132 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>{!! Auth::user()->name !!}</h1></div>
+  		
     </div>
     <div class="row">
-  		<div class="col-sm-3"><!--left col-->
-      <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div>
-        </div><!--/col-3-->
-    	<div class="col-sm-9">
-          <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
+  		<div class="col-sm-9">
+            <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                            <form class="form" action="{{route('update-profile-data')}}" method="POST" id="registrationForm">
+                                    {{ csrf_field() }}
+                                <div class="form-group row">{{--Name --}}
+                                        <div class="input-group">
+                                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail text-left" alt="avatar">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-default btn-file" style="">
+                                                        Browse… <input type="file" id="imgInp">
+                                                    </span>
+                                                </span>
+                                                
+                                        </div>
+                                        {{-- <div class="text-right media-left">
+                                                <h6 style="background-color:lavender" class="text-center">Hello "{!! Auth::user()->name; !!} Would like to change Your Photo</h6>
+                                                <input type="file" name="Photo" class="text-center center-block file-upload">
+                                        </div> --}}
+                                </div>
+                                                         
 
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>Name</h4></label>
-                          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any." value="{!! Auth::user()->name; !!}">
-                          </div>
-                      </div>
-                      <div class="form-group">
+                                <div class="form-group">{{--Name --}}
 
-                          {{-- <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div> --}}
-                      </div>
+                                    <div class="col-xs-6">
+                                        <label for="firstname"><h4>Name</h4></label>
+                                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="first-name" title="enter your first name if any." value="{!! Auth::user()->name; !!}">
+                                    </div>
+                                </div>
+                                <div class="form-group">{{--DateofBirth --}}
 
-                      <div class="form-group">
-                          {{--
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div> --}}
-                      </div>
+                                        <div class="col-xs-6">
+                                            <label for="email"><h4>Date of Birth</h4></label>
+                                            <input type="date" class="datepicker form-control {{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dop" id="email" required>
+                                        </div>
+                                    </div>
+                              
+                                <div class="form-group">{{--Email --}}
 
-                      <div class="form-group">
-                          {{-- <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div> --}}
-                      </div>
-                      <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="email"><h4>Email</h4></label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="{!! Auth::user()->email; !!}">
+                                    </div>
+                                </div>
+                                <div class="form-group">{{--Website --}}
 
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="{!! Auth::user()->email; !!}">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          {{--
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div> --}}
-                      </div>
-                      <div class="form-group">
+                                        <div class="col-xs-6">
+                                            <label for="email"><h4>Website</h4></label>
+                                            <input type="text" class="form-control" name="Website" id="email" placeholder="your Bio" title="enter your email." value="{!! Auth::user()->website; !!}">
+                                        </div>
+                                </div>
 
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password." >
-                          </div>
-                      </div>
-                      <div class="form-group">
+                                <div class="form-group">{{--About --}}
 
-                         {{--  <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div> --}}
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-succcess" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	{{-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> --}}
-                            </div>
-                      </div>
-              	</form>
+                                        <div class="col-xs-6">
+                                            <label for="email"><h4>About you</h4></label>
+                                            <input type="text" class="form-control" name="Bio" id="email" placeholder="your Bio" title="enter your email." value="{!! Auth::user()->email; !!}">
+                                        </div>
+                                </div>
+                                <div class="form-group">{{--Date ofBirth --}}
 
-              <hr>
+                                        <div class="col-xs-6">
+                                            <label for="email"><h4>Country</h4></label>
+                                            <select id="country" name="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
+                                                    <option value="">Select Country</option>
+                                                    @foreach(\App\User::getCountries() as $code => $name)
+                                                      <option value="{{$code}}" {{($code == 'EG' ? 'selected' : '')}}>{{$name}}</option>
+                                                    @endforeach
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="form-group">{{--Gender--}}
+                                       
+                                        <div class="col-xs-6">
+                                            <label for="gender" ><h4>Gender</h4></label>
+                                            <select id="gender" name="gender" class="form-control" required>
+                                              <option value="M">Male</option>
+                                              <option value="F">Female</option>
+                                            </select>
+                                            
+                                        </div>
 
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
+                                    {{--     <div class="col-xs-6">
+                                            <label for="email"><h4>Gender</h4></label>
+                                            <input type="text" class="form-control" name="Bio" id="email" placeholder="your Bio" title="enter your email." value="{!! Auth::user()->email; !!}">
+                                             </div> --}}
+                                </div>
 
-               <h2></h2>
+                                <div class="form-group">{{--Old password --}}
+                                    
+                                    <div class="col-xs-6">
+                                        <label for="old-password"><h4>Old Password</h4></label>
+                                        <input type="password" class="form-control" name='OldPassword'id="old-password" placeholder=" enter old password " title="enter your old password." >
+                                    </div> 
+                                </div>
 
-               <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
+                                <div class="form-group">{{--New password --}}
 
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="new-password"><h4>New Password</h4></label>
+                                        <input type="password" class="form-control" name="NewPassword" id="password" placeholder="enter new password" title="enter your new password." >
+                                    </div>
+                                </div>
 
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
+                                <div class="form-group"> {{-- save button --}}
+                                    <div class="col-xs-6">
+                                            <br>
+                                            <br>
+                                            <button class="btn btn-lg btn-succcess btn btn-light" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                            {{-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> --}}
+                                    </div>
+                                </div>
+                            </form>
+                            <hr>
+                    </div><!--/tab-pane-->
 
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                      </div>
-              	</form>
-
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="settings">
-
-
-                  <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                            </div>
-                      </div>
-              	</form>
-              </div>
-
-              </div><!--/tab-pane-->
-          </div><!--/tab-content-->
-
-        </div><!--/col-9-->
-    </div><!--/row-->
-
+            </div><!--/col-9-->
+        </div>
+    </div>
+</div>
 @endsection
