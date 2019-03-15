@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Like;
+use DB;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,5 +41,15 @@ class HomePostController extends Controller
         $post = Post::all();
         $arr = array('post' =>$post);
         return view('home',$arr);
+    }
+    public function delete(Request $request)
+    {
+        Like::where('post_id',$request->post_id)->delete();
+        //Comment::where('post_id',$request->post_id)->delete();
+        DB::table('posts')
+        ->where('id',$request->post_id)
+        ->delete();
+        return redirect(route('home'));
+
     }
 }

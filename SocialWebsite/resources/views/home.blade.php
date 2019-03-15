@@ -12,6 +12,14 @@
            <img src="/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                       {{$art->user->name}}
             </a>
+            @if(Auth::user()->id==$art->user->id)
+      <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post"> 
+      {{ csrf_field() }}
+      <input type="hidden" name="post_id" value="{{$art->id}}">
+      <input type="submit" name="Delete" value="Delete" class="btn btn-danger" style="float: right; margin-top:-50px; margin-right:5px;  ">
+      </form>
+        @endif 
+
           </div>
 
     <div class="thumbnail" style="margin-left: 10px;" >
