@@ -19,7 +19,7 @@ class ProfileSettingController extends Controller
       $user->name = $request->input('firstname');
       $user->email =$request->input('email');
           $user->save(); */
-     return $request->input();
+     return  view('/profile/settings',$request->input());
      /* return Redirect::back(); */
     }
 }

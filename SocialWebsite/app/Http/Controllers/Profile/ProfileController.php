@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Profile;
+//<<<<<<< HEAD
 
 use App\User;
 use App\Post;
@@ -26,4 +27,11 @@ class ProfileController extends Controller
     
    
 
+    public function getProfile($name)
+    {
+        $user = User::where('name' , $name)->first();
+        if(!$user)
+            abort(404);
+        return view('profile.index')->with('user' , $user);
+    }
 }

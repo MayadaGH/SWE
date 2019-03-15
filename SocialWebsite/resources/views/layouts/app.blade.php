@@ -64,14 +64,25 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{url('/profile/settings')}}"><i class="fas fa-users-cog"></i> Settings</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-search"></i> Search</a>
-                      </li>
+
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-phone"></i> Contact</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> About</a>
+                      </li>
+
+                      <li class="nav-item" >
+                        <form action="{{route('search.results')}}" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q"
+                                placeholder="Search For..."> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="fas fa-search"></span>
+                                </button>
+                                </span>
+                            </div>
+                        </form>
                       </li>
                     </ul>
 
