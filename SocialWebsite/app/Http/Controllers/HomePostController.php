@@ -52,4 +52,18 @@ class HomePostController extends Controller
         return redirect(route('home'));
 
     }
+    public function edit(Request $request)
+    {
+        $post = Post::find($request->input('post_id')); 
+        $post->body = $request->input('body'); 
+        $post->save();
+        return redirect(route('home'));
+
+    }
+    public function show(Request $request)
+    {
+
+        $post = DB::table('posts')->where('id',$request->post_id)->first();
+        return view('post.edit',compact('post'));
+    }
 }

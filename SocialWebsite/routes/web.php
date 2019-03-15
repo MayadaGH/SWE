@@ -38,6 +38,8 @@ Route::get('/home', 'HomePostController@index')->name('home');
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
 Route::post('/DeletePost','HomePostController@delete')->name('home-post.delete');
+Route::post('/showPost','HomePostController@show')->name('home-post.show');
+Route::post('/EditPost','HomePostController@edit')->name('home-post.edit');
 
 Route::post('/home','HomeLikeController@store')->name('like');
 
