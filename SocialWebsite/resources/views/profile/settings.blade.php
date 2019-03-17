@@ -127,7 +127,7 @@
                                     
                                     <div class="col-xs-6">
                                         <label for="old-password"><h4>Old Password @if ($errors->has('OldPassword')) <strong class="text-danger">{{ $errors->first('OldPassword') }} @endif</h4></label>
-                                        <input type="password" class="form-control" name='OldPassword'id="old-password" placeholder=" enter old password " title="enter your old password." >
+                                        <input type="password" class="form-control" name='Oldpassword'id="old-password" placeholder=" enter old password " title="enter your old password." >
                                     </div> 
                                 </div>
 
