@@ -22,7 +22,7 @@ class HomePostController extends Controller
     public function store(Request $request){
         $request->validate([
             'body' => 'required',
-            'image' => 'required | mimes:jpeg,jpg,png | max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048|required',
             ]);
             $post              = new Post();
         $post->body        = $request->input('body');
