@@ -46,10 +46,10 @@ Route::post('/home','HomeLikeController@store')->name('like');
 //>>>>>>> 88925d1b87c6c96fa0fb338fbb1d0cbe9e3a7972
 
 //Routes For Profile Controller
-Route::get('/profile/settings','Profile\ProfileSettingController@index');
-Route::post('/profile/settings','Profile\ProfileSettingController@index');
+//Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
+Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view 
 Route::get('/profile/profile','Profile\ProfileController@index')->name('restore-profile-data');
-Route::post('/profile/profile','Profile\ProfileController@updateprofile')->name('update-profile-data');
+Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to 
 //Search Route
 Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile

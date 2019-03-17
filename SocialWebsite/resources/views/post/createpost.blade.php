@@ -20,7 +20,7 @@
             @csrf
             <div class="form-group"> 
             <a href="#" role="button"> 
-                <img src="{{ Auth::user()->profile_photo }}" style="width:32px; height:32px;  border-radius:50%; margin:5px">  <span class="caret"></span>
+                <img src="{{ URL::to('/') }}/uploaded/{{Auth::user()->profile_photo}}" style="width:32px; height:32px;  border-radius:50%; margin:5px">  <span class="caret"></span>
             </a>
                 <input type="text" name="body" class="form-control" placeholder="What's Your Mind , {{ Auth::user()->name}}">
             @if ($errors->has('body'))

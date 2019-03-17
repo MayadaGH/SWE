@@ -100,5 +100,7 @@ class RegisterController extends Controller
             'profile_photo' => (isset($data['profile_photo']) ? $data['profile_photo'] : 'nophoto.jpg' ),
             'autobio' => $data['autobio']
         ]);
+
+      
     }
 }

@@ -1,8 +1,19 @@
 @extends('layouts.app')
 @section('content')
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
      <div class=" text-center"><!--col-3-->
           <div class="center">
-               <img src="{!! ($user->profile_photo =='nophoto.jpg'? 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png' : $user->profile_photo ) !!}" class="avatar img-circle img-thumbnail" alt="avatar">
+               <img src="{{ URL::to('/') }}/uploaded/{{Auth::user()->profile_photo}}" class="avatar img-circle img-thumbnail" alt="avatar">
                
                <br>
                <br>
@@ -45,7 +56,7 @@
                <div style="background-color: #f2f2f2; width:820px ; height: 500px ; margin:100px; margin-left:200px;">
                  <div style=" font-size: 22px; margin-left: 20px;">
                    <a href="profile/{{$art->user_id}}" >
-                  <img src="/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
+                  <img src="{{ URL::to('/') }}/uploaded/{{Auth::user()->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                              {{$art->user->name}}
                    </a>
               @if(Auth::user()->id==$art->user->id)

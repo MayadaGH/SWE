@@ -19,8 +19,8 @@
     <form action="{{route('home-post.edit')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group"> 
-            <a href="#" role="button"> 
-                <img src="{{ Auth::user()->profile_photo }}" style="width:32px; height:32px;  border-radius:50%; margin:5px">  <span class="caret"></span>
+            <a href="#" role="button">   
+                <img src="{{ URL::to('/') }}/uploaded/{{Auth::user()->profile_photo}}" style="width:32px; height:32px;  border-radius:50%; margin:5px">  <span class="caret"></span>
             </a>
                 <input type="text" name="body" class="form-control" value="{{$post->body}}">
             @if ($errors->has('body'))
