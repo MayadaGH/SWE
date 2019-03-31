@@ -5,15 +5,14 @@
 
    	<h1 class="text-center"> Posts</h1>
 
-   		   @foreach($post as $art)
         <div style="background-color: #f2f2f2; width:820px ; height: 500px ; margin:100px; margin-left:200px;">
           <div style=" font-size: 22px; margin-left: 20px;">
-            <a href="profile/{{$art->user_id}}" >
+            <a href="profile/{{$post->user_id}}" >
               
-           <img src="{{ URL::to('/') }}/uploaded/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
-                                      {{$art->user->name}}
+           <img src="{{ URL::to('/') }}/uploaded/{{$post->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
+                                      {{$post->user->name}}
             </a>
-       @if(Auth::user()->id==$art->user->id)
+       @if(Auth::user()->id==$post->user->id)
        <div class="dropdown" style="float:right; margin-top:20px;">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete 
         <span class="caret"></span></button>
@@ -21,14 +20,14 @@
           <li>
               <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post"> 
               {{ csrf_field() }}
-              <input type="hidden" name="post_id" value="{{$art->id}}">
+              <input type="hidden" name="post_id" value="{{$post->id}}">
               <input type="submit" name="edit" value=" Edit"  class="btn btn-default">
               </form> 
           </li>
           <li>
           <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post"> 
           {{ csrf_field() }}
-          <input type="hidden" name="post_id" value="{{$art->id}}">
+          <input type="hidden" name="post_id" value="{{$post->id}}">
           <input type="submit" name="Delete" value="Delete" class="btn btn-default" >
           </form>
           </li>
@@ -41,22 +40,22 @@
 
     <div class="thumbnail" style="margin-left: 10px;" >
     <h5 class="ArticleBody">
-            {{ str_limit(strip_tags($art->body), 50) }}
+            {{ str_limit(strip_tags($post->body), 50) }}
 
         </h5>
 
-            @if (strlen(strip_tags($art->body)) > 50)
+            @if (strlen(strip_tags($post->body)) > 50)
               ...
 
 
-              <a href='{{ "/read/".$art->id }}' >Read More<i class="fas fa-angle-right"></i></a>
+              <a href='{{ "/read/".$post->id }}' >Read More<i class="fas fa-angle-right"></i></a>
               <br>
             @endif
             <p style="margin-left: 660px;">
-            {{$art->created_at->toFormattedDateString()}}
+            {{$post->created_at->toFormattedDateString()}}
         </p>
-     <a href='{{ "/post/".$art->id }}'>
-        <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">
+     <a href='{{ "/post/".$post->id }}'>
+        <img src="/image/{{$post->image}}" class="img-thumbnail" style="margin-top:-20px;">
         <div class="caption">
 
         </div>
@@ -67,7 +66,7 @@
        @endphp
 
 
-       @foreach($art->like as $like)
+       @foreach($post->like as $like)
        @php
 
        if($like->like==1)
@@ -88,7 +87,7 @@
       <div class="row">
 
       <div class="col-sm-3 col-md-6">
-        <button type="button" class="like btn btn-light" style="width:420px"  post_id ="{{$art->id}}" >
+        <button type="button" class="like btn btn-light" style="width:420px"  post_id ="{{$post->id}}" >
           <b> <span class="like_count">{{$like_count}}</span></b>
           <i class="emoji {{$like_statu}}" ></i> Like
         </button>
@@ -104,7 +103,7 @@
     </div>
     <br/>
 
-             @endforeach
+          
 
 </div>
 <script>
