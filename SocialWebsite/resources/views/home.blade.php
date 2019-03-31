@@ -6,6 +6,7 @@
    	<h1 class="text-center"> Posts</h1>
 
    		   @foreach($post as $art)
+         @if(!$art->for_page)
         <div style="background-color: #f2f2f2; width:820px ; height: 500px ; margin:100px; margin-left:200px;">
           <div style=" font-size: 22px; margin-left: 20px;">
             <a href="profile/{{$art->user_id}}" >
@@ -16,7 +17,11 @@
        @if(Auth::user()->id==$art->user->id)
        <div class="dropdown" style="float:right; margin-top:20px;">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete
+<<<<<<< HEAD
         </button>
+=======
+        <span class="caret"></span></button>
+>>>>>>> cfa2ddabdc1c083318a22cd5e085f8cfdf70a81f
         <ul class="dropdown-menu">
           <li>
               <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post">
@@ -103,7 +108,7 @@
     </div>
     </div>
     <br/>
-
+             @endif
              @endforeach
 
 </div>

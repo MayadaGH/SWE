@@ -109,8 +109,12 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         if($page->user_id == auth()->id()){
+          $pagePost = $page->page_post;
+          //$post = ;
+          //return dd($post);
+          //return dd($pagePost);
           $page->delete();
-          return redirect('/pages');
+          return redirect(route('page.index'));
         }else{
           abort(403);
         }
