@@ -17,11 +17,11 @@
        @if(Auth::user()->id==$art->user->id)
        <div class="dropdown" style="float:right; margin-top:20px;">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
         </button>
-=======
-        <span class="caret"></span></button>
->>>>>>> cfa2ddabdc1c083318a22cd5e085f8cfdf70a81f
+<!-- ======= -->
+        </button>
+<!-- >>>>>>> cfa2ddabdc1c083318a22cd5e085f8cfdf70a81f -->
         <ul class="dropdown-menu">
           <li>
               <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post">

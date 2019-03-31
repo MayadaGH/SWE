@@ -54,22 +54,22 @@ Route::get('/profile/settings','Profile\ProfileController@index');
 Route::resource('/user-friend', 'UserFriendController')->except(['edit']);
 //=======
 //Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
-<<<<<<< HEAD
+// <<<<<<< HEAD
 Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
 Route::get('/profile/profile','Profile\ProfileController@index')->name('restore-profile-data');
 Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
-=======
-<<<<<<< HEAD
-Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view 
+// =======
+// <<<<<<< HEAD
+Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
 Route::get('/profile','Profile\ProfileController@index')->name('restore-profile-data');//this route call function to bring auth user data
-Route::get('/profile/profile/{id}','Profile\ProfileController@GetOthersProfile')->name('user-profile-data'); //this route to bring another user data and show it in profile data 
-Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to 
-=======
+Route::get('/profile/profile/{id}','Profile\ProfileController@GetOthersProfile')->name('user-profile-data'); //this route to bring another user data and show it in profile data
+Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
+// =======
 Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
 Route::get('/profile/profile','Profile\ProfileController@index')->name('restore-profile-data');
 Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
->>>>>>> d76081eddacdb99f688fa81c86abcc04d8833ab9
->>>>>>> bac667f8e6d78d8400ee233da653b7c3659c8364
+// >>>>>>> d76081eddacdb99f688fa81c86abcc04d8833ab9
+// >>>>>>> bac667f8e6d78d8400ee233da653b7c3659c8364
 //Search Route
 Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile
