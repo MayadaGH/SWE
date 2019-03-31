@@ -31,10 +31,10 @@ class ProfileSettingController extends Controller
             'gender'=>'required|string',
             //'photo'=>'|string',
         ]);
-        
+
         $user = User::find(Auth::id());
         $fileNameStoreImage = $user->profile_photo ;
-        /// cheking if the user uploded new photo  and saving it to file public /uploaded with new name to prevent errors 
+        /// cheking if the user uploded new photo  and saving it to file public /uploaded with new name to prevent errors
         if ($request->hasFile('photo')) {
 
             $filenameWithExtention = $request->file('photo')->getClientOriginalName();
@@ -52,12 +52,12 @@ class ProfileSettingController extends Controller
                 $user->gender =$request->input('gender');
                 $user->website =$request->input('Website');
                 $user->autobio =$request->input('Bio');
-                $user->save(); 
-                $message='Data Is saved Successfully'; 
+                $user->save();
+                $message='Data Is saved Successfully';
                 return view('/profile/settings',compact("user","message"));
         }
         elseif($request->input('NewPassword')==null&&!Hash::check($request->input('Oldpassword'),$user->password))
-        {       $message='you entered a wrong password  '; 
+        {       $message='you entered a wrong password  ';
                 return view('/profile/settings',compact("user","message"));
             // return view('/profile/settings')->withErrors('OldPassword', 'Wrong Paswword');
             // return Redirect::back()->withErrors('OldPassword', 'Wrong Paswword');
@@ -74,7 +74,7 @@ class ProfileSettingController extends Controller
                 $user->gender =$request->input('gender');
                 $user->website =$request->input('Website');
                 $user->autobio =$request->input('Bio');
-                $user->save(); 
+                $user->save();
                 $message='password is updated';
                 // Session::flash('message', "Data Is saved Successfully");
                 // return redirect()->back();
@@ -83,12 +83,12 @@ class ProfileSettingController extends Controller
 
         }
         elseif($request->input('NewPassword')!=null&&!Hash::check($request->input('Oldpassword'),$user->password))
-    {          
-        $message='Wrong Password'; 
+    {
+        $message='Wrong Password';
                 return view('/profile/settings',compact("user","message"));
         // return  $request->input();
         // return Redirect::back()->withErrors('OldPassword', 'Wrong Paswword');
-    }      
+    }
     //  return  $request->input();
     //  //return redirect()->back();
      //return array($request->input());

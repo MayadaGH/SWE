@@ -39,7 +39,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -63,12 +63,6 @@
                           <a class="dropdown-item" href="{{route('page.create')}}">Create page</a>
                         </div>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('restore-profile-data')}}"><i class="fas fa-user-alt"></i> Profile</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{route('Restore-View-Settings-Data')}}"><i class="fas fa-users-cog"></i> Settings</a>
-                      </li>
 
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-phone"></i> Contact</a>
@@ -76,8 +70,18 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> About</a>
                       </li>
+                      <li class="nav-item">
+                          <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-10px;">
+                            @php
+                              $user = auth()->user();
+                              $userRequests = $user->receivedFriends()->where('is_accepted', 0)->get();
 
-                      <li class="nav-item" >
+                            @endphp
+                            {{$userRequests->count()}}
+                          </span>
+                          <a class="nav-link" href="{{route('user-friend.index')}}">Friend Request <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item" style='margin-left:40px;margin-top:7px;'>
                         <form action="{{route('search.results')}}" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="q"
@@ -93,7 +97,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav float-right">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -107,10 +111,19 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                  <a class="dropdown-item" href="{{route('restore-profile-data')}}">
+                                      {{ __('Profile') }}
+                                  </a>
+
+                                  <a class="dropdown-item" href="{{route('Restore-View-Settings-Data')}}">
+                                      {{ __('Settings') }}
+                                  </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

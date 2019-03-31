@@ -6,61 +6,64 @@
    	<h1 class="text-center"> Posts</h1>
 
    		   @foreach($post as $art)
-        <div style="background-color: #f2f2f2; width:820px ; height: 500px ; margin:100px; margin-left:200px;">
-          <div style=" font-size: 22px; margin-left: 20px;">
+         @if(!$art->for_page)
+        <div style="background-color: #f2f2f2;" class="col-md-8 col-md-offset-2">
+          <div style=" font-size: 22px;">
             <a href="profile/{{$art->user_id}}" >
-              
+
            <img src="{{ URL::to('/') }}/uploaded/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                       {{$art->user->name}}
             </a>
        @if(Auth::user()->id==$art->user->id)
        <div class="dropdown" style="float:right; margin-top:20px;">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete 
-        <span class="caret"></span></button>
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete
+<!-- <<<<<<< HEAD -->
+        </button>
+<!-- ======= -->
+        </button>
+<!-- >>>>>>> cfa2ddabdc1c083318a22cd5e085f8cfdf70a81f -->
         <ul class="dropdown-menu">
           <li>
-              <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post"> 
+              <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post">
               {{ csrf_field() }}
               <input type="hidden" name="post_id" value="{{$art->id}}">
-              <input type="submit" name="edit" value=" Edit"  class="btn btn-default">
-              </form> 
+              <input type="submit" name="edit" value=" Edit"  class="text-left btn btn-block">
+              </form>
           </li>
           <li>
-          <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post"> 
+          <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post">
           {{ csrf_field() }}
           <input type="hidden" name="post_id" value="{{$art->id}}">
-          <input type="submit" name="Delete" value="Delete" class="btn btn-default" >
+          <input type="submit" name="Delete" value="Delete" class="text-left btn btn-block text-danger" >
           </form>
           </li>
         </ul>
-      </div> 
+      </div>
 
-        @endif 
+        @endif
 
           </div>
 
-    <div class="thumbnail" style="margin-left: 10px;" >
+    <div class="thumbnail" >
     <h5 class="ArticleBody">
             {{ str_limit(strip_tags($art->body), 50) }}
-
-        </h5>
+    </h5>
 
             @if (strlen(strip_tags($art->body)) > 50)
               ...
 
 
-              <a href='{{ "/read/".$art->id }}' >Read More<i class="fas fa-angle-right"></i></a>
+              <a href='{{ "/read/".$art->id }}'>Read More<i class="fas fa-angle-right"></i></a>
               <br>
             @endif
-            <p style="margin-left: 660px;">
-            {{$art->created_at->toFormattedDateString()}}
-        </p>
-     <a href='{{ "/post/".$art->id }}'>
-        <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">
+        <div class="clearfix"></div>
+        <div class="text-center">
+          <br>
+          <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">
+        </div>
         <div class="caption">
 
         </div>
-      </a>
       @php
          $like_count = 0 ;
          $like_statu = "far fa-thumbs-up";
@@ -88,7 +91,7 @@
       <div class="row">
 
       <div class="col-sm-3 col-md-6">
-        <button type="button" class="like btn btn-light" style="width:420px"  post_id ="{{$art->id}}" >
+        <button type="button" class="like btn btn-light btn-block" post_id ="{{$art->id}}" >
           <b> <span class="like_count">{{$like_count}}</span></b>
           <i class="emoji {{$like_statu}}" ></i> Like
         </button>
@@ -96,14 +99,14 @@
       </div>
 
       <div class="col-sm-3 col-md-6">
-        <button type="button" class="btn btn-light" style="width:390px"><i class="far fa-comment"></i> Comment</button>
+        <button type="button" class="btn btn-light btn-block"><i class="far fa-comment"></i> Comment</button>
 
       </div>
       </div>
     </div>
     </div>
     <br/>
-
+             @endif
              @endforeach
 
 </div>
