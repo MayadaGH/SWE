@@ -9,7 +9,7 @@
          @if(!$art->for_page)
         <div style="background-color: #f2f2f2;" class="col-md-8 col-md-offset-2">
           <div style=" font-size: 22px;">
-            <a href="profile/{{$art->user_id}}" >
+          <a href="{{ route('user-profile-data', ['id'=>$art->user_id]) }}" >
 
            <img src="{{ URL::to('/') }}/uploaded/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                       {{$art->user->name}}

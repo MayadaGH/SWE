@@ -129,9 +129,9 @@
                          <label for="" style="background-color:lavender;">Bio</label>
                          <p>{!! $user->autobio; !!}</p>
                </div>
-          </div>--}}
+          </div>
 
-     </div>
+     </div> --}}
      <div class="container">
 
       <h1 class="text-center" > Posts</h1>
