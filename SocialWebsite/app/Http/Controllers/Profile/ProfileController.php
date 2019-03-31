@@ -25,7 +25,23 @@ class ProfileController extends Controller
       return view('/profile/profile',$arr,compact('user'));
     }
 
+<<<<<<< HEAD
 
+=======
+    public function GetOthersProfile($id)
+    {
+        $user = User::where('id' , $id)->first();
+        if(!$user)
+          {
+            abort(404);
+          }  
+
+          $post = Post::all()->where('user_id',$id);
+          $arr = array('post' =>$post);
+          return view('user-profile-data',$arr,compact('user'));
+    }
+   
+>>>>>>> 4e041dced93b7287b4e112f0d10170d03735bd34
 
     public function getProfile($name)
     {

@@ -14,12 +14,24 @@ class Page extends Model
       'user_id',
     ];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($page) {
+             $page->page_post()->delete();
+        });
+    }
+
     public function user(){
       return $this->belongsTo(User::class);
     }
     public function getName()
     {
         return $this->page_name ;
+    }
+
+    public function page_post(){
+      return $this->hasMany('App\PagePost');
     }
 
 }

@@ -49,6 +49,35 @@ class User extends Authenticatable implements MustVerifyEmail
     {
     return $this->hasMany('App\Like');
     }
+    public function getGenderNameAttribute(){
+      return ($this->gender == 'M'? 'Male' : 'Female');
+    }
+    public function getAgeAttribute(){
+      $date = new \Carbon\Carbon($this->dob);
+      return $date->age;
+    }
+    public function scopeNotMe($query){
+      return $query->where('id', '!=', $this->id);
+
+    }
+    public function scopeNotFriends($query){
+      return $query
+      ->WhereNotIn('id', function($q){
+        $q->select('receiver_id')->from('user_friends')->where('sender_id', $this->id);
+      })
+      ->WhereNotIn('id', function($q){
+        $q->select('sender_id')->from('user_friends')->where('receiver_id', $this->id);
+      });
+    }
+    public function sentFriends(){
+      return $this->hasMany('App\UserFriend', 'sender_id');
+    }
+    public function receivedFriends(){
+      return $this->hasMany('App\UserFriend', 'receiver_id');
+    }
+    public function friends(){
+      return $this->sentFriends->merge($this->receivedFriends);
+    }
 
     public function pages(){
       return $this->hasMany(Page::class);

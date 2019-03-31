@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'dob' => ['date'],
             'gender' => ['required', 'in:M,F'],
             'country' => ['required', 'string'],
-            'website' => ['required', 'string'],
+            'website' => ['nullable', 'string'],
             'profile_photo' => ['nullable', 'string'],
             'autobio' => ['string']
         ]);

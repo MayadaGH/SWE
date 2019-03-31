@@ -27,18 +27,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     {{-- profile settings sources --}}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -48,6 +49,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      @auth
                       <li class="nav-item">
                         <a class="nav-link active" href="{{url('home')}}"><i class="fas fa-home"></i> Home</a>
                       </li>
@@ -61,12 +63,6 @@
                           <a class="dropdown-item" href="{{route('page.create')}}">Create page</a>
                         </div>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('restore-profile-data')}}"><i class="fas fa-user-alt"></i> Profile</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{route('Restore-View-Settings-Data')}}"><i class="fas fa-users-cog"></i> Settings</a>
-                      </li>
 
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-phone"></i> Contact</a>
@@ -74,8 +70,18 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> About</a>
                       </li>
+                      <li class="nav-item">
+                          <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-10px;">
+                            @php
+                              $user = auth()->user();
+                              $userRequests = $user->receivedFriends()->where('is_accepted', 0)->get();
 
-                      <li class="nav-item" >
+                            @endphp
+                            {{$userRequests->count()}}
+                          </span>
+                          <a class="nav-link" href="{{route('user-friend.index')}}">Friend Request <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item" style='margin-left:40px;margin-top:7px;'>
                         <form action="{{route('search.results')}}" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="q"
@@ -87,10 +93,11 @@
                             </div>
                         </form>
                       </li>
+                      @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav float-right">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -104,10 +111,19 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                  <a class="dropdown-item" href="{{route('restore-profile-data')}}">
+                                      {{ __('Profile') }}
+                                  </a>
+
+                                  <a class="dropdown-item" href="{{route('Restore-View-Settings-Data')}}">
+                                      {{ __('Settings') }}
+                                  </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -130,10 +146,11 @@
         </main>
     </div>
     <script>
-    $('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-    });
+    $(function(){
+      $('.datepicker').datepicker({
+      format: 'mm/dd/yyyy'
+      });
+    })
     </script>
 </body>
 </html>
