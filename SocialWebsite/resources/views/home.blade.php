@@ -6,36 +6,37 @@
    	<h1 class="text-center"> Posts</h1>
 
    		   @foreach($post as $art)
+         @if(!$art->for_page)
         <div style="background-color: #f2f2f2; width:820px ; height: 500px ; margin:100px; margin-left:200px;">
           <div style=" font-size: 22px; margin-left: 20px;">
             <a href="profile/{{$art->user_id}}" >
-              
+
            <img src="{{ URL::to('/') }}/uploaded/{{$art->user->profile_photo}}" style="width:50px; height:50px;  border-radius:50% ; margin-top: 10px; margin-bottom: 15px;">
                                       {{$art->user->name}}
             </a>
        @if(Auth::user()->id==$art->user->id)
        <div class="dropdown" style="float:right; margin-top:20px;">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete 
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Edit / Delete
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li>
-              <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post"> 
+              <form enctype="multipart/form-data" action="{{route('home-post.show')}}" method="post">
               {{ csrf_field() }}
               <input type="hidden" name="post_id" value="{{$art->id}}">
               <input type="submit" name="edit" value=" Edit"  class="btn btn-default">
-              </form> 
+              </form>
           </li>
           <li>
-          <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post"> 
+          <form enctype="multipart/form-data" action="{{route('home-post.delete')}}" method="post">
           {{ csrf_field() }}
           <input type="hidden" name="post_id" value="{{$art->id}}">
           <input type="submit" name="Delete" value="Delete" class="btn btn-default" >
           </form>
           </li>
         </ul>
-      </div> 
+      </div>
 
-        @endif 
+        @endif
 
           </div>
 
@@ -103,7 +104,7 @@
     </div>
     </div>
     <br/>
-
+             @endif
              @endforeach
 
 </div>

@@ -25,6 +25,7 @@ Auth::routes(['verify' => true]);
 // Routes for PageController
 //Route::resources('pages', 'Page\PageController');
 Route::resource('page', 'Page\PageController');
+Route::resource('pagePost', 'Page\PagePostController');
 // Route::get('/pages', 'Page\PageController@index');
 // Route::get('/pages/create', 'Page\PageController@create');
 // Route::post('/pages', 'Page\PageController@store')->name('pages');
@@ -34,7 +35,7 @@ Route::resource('page', 'Page\PageController');
 // Route::delete('pages/{page}', 'Page\PageController@destroy');
 //=======
 Route::get('/home', 'HomePostController@index')->name('home');
-Route::get('/post/{id}','SinglePostController@index'); 
+Route::get('/post/{id}','SinglePostController@index');
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
 Route::post('/DeletePost','HomePostController@delete')->name('home-post.delete');
@@ -47,9 +48,9 @@ Route::post('/home','HomeLikeController@store')->name('like');
 
 //Routes For Profile Controller
 //Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
-Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view 
+Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
 Route::get('/profile/profile','Profile\ProfileController@index')->name('restore-profile-data');
-Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to 
+Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
 //Search Route
 Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile
