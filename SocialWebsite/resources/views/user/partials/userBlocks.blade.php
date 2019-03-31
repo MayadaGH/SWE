@@ -1,7 +1,7 @@
 
 <div class="col-md-3 mb-4">
     <div class="card">
-    <a href="{{route('profile.index' , ['id' => $user->id])}}" >
+    <a href="{{route('user-profile-data' , ['id' => $user->id])}}" >
       <img src="{{asset($user->profile_photo)}}" class="card-img-top" alt="...">
     </a>
       <div class="card-body">

@@ -25,40 +25,6 @@ class ProfileController extends Controller
       return view('/profile/profile',$arr,compact('user'));
     }
 
-<<<<<<< HEAD
-      /* public function GetOthersProfile($id)
-      {
-          $user = User::where('id' , $id)->first();
-          if(!$user)
-            {
-              abort(404);
-            }  
-
-            $post = Post::all()->where('user_id',$id);
-            $arr = array('post' =>$post);
-            return view('user-profile-data',$arr,compact('user'));
-      } */
-   
-=======
-
-
-
-    public function GetOthersProfile($id)
-    {
-        $user = User::where('id' , $id)->first();
-        if(!$user)
-          {
-            abort(404);
-          }
-
-          $post = Post::all()->where('user_id',$id);
-          $arr = array('post' =>$post);
-          return view('user-profile-data',$arr,compact('user'));
-    }
-
-
->>>>>>> cc2706dbf29550eff422d798a6358be77d90a06b
-
     public function getProfile($name)
     {
         $user = User::where('name' , $name)->first();
