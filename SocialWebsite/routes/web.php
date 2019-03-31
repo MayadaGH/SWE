@@ -43,3 +43,6 @@ Route::post('/home','HomeLikeController@store')->name('like');
 
 //Routes For Profile Controller
 Route::get('/profile/settings','Profile\ProfileController@index');
+
+// Routes for Friends Managing Controller
+Route::resource('/user-friend', 'UserFriendController')->except(['edit', 'update']);
