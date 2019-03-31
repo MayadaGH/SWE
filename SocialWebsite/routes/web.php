@@ -50,7 +50,7 @@ Route::post('/home','HomeLikeController@store')->name('like');
 Route::get('/profile/settings','Profile\ProfileController@index');
 
 // Routes for Friends Managing Controller
-Route::resource('/user-friend', 'UserFriendController')->except(['edit', 'update']);
+Route::resource('/user-friend', 'UserFriendController')->except(['edit']);
 //=======
 //Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
 Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view

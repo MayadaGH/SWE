@@ -4,6 +4,7 @@
 <div class="container">
   <h1>Add Friends</h1>
   <div class="row">
+    @if(count($candidateUsers))
   @foreach($candidateUsers as $user)
   <div class="col-md-3 mb-4">
     <div class="card">
@@ -20,6 +21,9 @@
     </div>
   </div>
   @endforeach
+  @else
+    <div class="alert alert-info"><p>There are no friends to add.</p></div>
+  @endif
   </div>
   <div class="row">
     {{ $candidateUsers->links() }}
@@ -27,13 +31,15 @@
 </div>
 <script>
   $(".send-friend-request").on('click', function(){
-    var userID = $(this).data('user-id');
+    var userID = $(this).data('user-id'),
+    parentContainer = $(this).closest('.col-md-3.mb-4');
     $.ajax({
-      'url' : {{ route('user-friend.store') }},
+      'url' : "{{ route('user-friend.store') }}",
       'method' : 'POST',
       data: { user_id: userID, _token: token },
       success: function(data){
-        console.log(data);
+        parentContainer.hide(500);
+        alert("Friend request sent!");
       },
       error: function(data){
         alert("Failed to send a friend request.");
