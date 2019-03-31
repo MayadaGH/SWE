@@ -115,5 +115,12 @@ class PageController extends Controller
           abort(403);
         }
     }
+    public function getPage($page_name)
+    {
+        $page = Page::where('page_name' , $page_name)->first();
+        if(!$page)
+            abort(404);
+        return view('profile.profile')->with('page' , $page);
+    }
 
 }

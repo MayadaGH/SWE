@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function __construct(){
       $this->middleware('verified');
     }
-  
+
     public function index(){
       $user=Auth::user();
       //return view('/profile/profile',);
@@ -24,8 +24,8 @@ class ProfileController extends Controller
       $arr = array('post' =>$post);
       return view('/profile/profile',$arr,compact('user'));
     }
-    
-   
+
+
 
     public function getProfile($name)
     {

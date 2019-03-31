@@ -1,6 +1,6 @@
 <div >
-    <a  href="{{route('profile.index' , ['name' => $user->name])}}" style="margin:3%;">
-        <img  alt="{{ $user->getNameOrEmail()}} " src="{{ $user->getImageUrl() }}" style="width:20%;">
+    <a href="{{route('profile.profile' , ['id' => $user->id])}}" style="margin:3%;">
+        <img  alt="{{ $user->getNameOrEmail()}} " src="{{ $user->getImage() }}" style="width:20%;">
     </a>
-    <a href="{{route('profile.index' , ['name' => $user->name])}}">{{ $user->getNameOrEmail()}}</a>
+    <a href="{{route('profile.profile' , ['id' => $user->id])}}">{{ $user->getNameOrEmail()}}</a>
 </div>
