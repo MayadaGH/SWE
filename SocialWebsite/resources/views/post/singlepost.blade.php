@@ -54,7 +54,7 @@
             <p style="margin-left: 660px;">
             {{$post->created_at->toFormattedDateString()}}
         </p>
-     <a href='{{ "/read/".$post->id }}'>
+     <a href='{{ "/post/".$post->id }}'>
         <img src="/image/{{$post->image}}" class="img-thumbnail" style="margin-top:-20px;">
         <div class="caption">
 
