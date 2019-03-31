@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Page;
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -109,15 +110,22 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         if($page->user_id == auth()->id()){
-          $pagePost = $page->page_post;
-          //$post = ;
-          //return dd($post);
-          //return dd($pagePost);
+          foreach($page->pagePost as $page_post){
+            $post = Post::findOrFail($page_post->post_id);
+            $post->delete();
+          };
           $page->delete();
           return redirect(route('page.index'));
         }else{
           abort(403);
         }
+    }
+    public function getPage($page_name)
+    {
+        $page = Page::where('page_name' , $page_name)->first();
+        if(!$page)
+            abort(404);
+        return view('profile.profile')->with('page' , $page);
     }
 
 }

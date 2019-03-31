@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Profile;
-//<<<<<<< HEAD
+
 
 use App\User;
 use App\Post;
@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function __construct(){
       $this->middleware('verified');
     }
-  
+
     public function index(){
       $user=Auth::user();
       //return view('/profile/profile',);
@@ -25,6 +25,7 @@ class ProfileController extends Controller
       return view('/profile/profile',$arr,compact('user'));
     }
 
+<<<<<<< HEAD
       /* public function GetOthersProfile($id)
       {
           $user = User::where('id' , $id)->first();
@@ -38,6 +39,25 @@ class ProfileController extends Controller
             return view('user-profile-data',$arr,compact('user'));
       } */
    
+=======
+
+
+
+    public function GetOthersProfile($id)
+    {
+        $user = User::where('id' , $id)->first();
+        if(!$user)
+          {
+            abort(404);
+          }
+
+          $post = Post::all()->where('user_id',$id);
+          $arr = array('post' =>$post);
+          return view('user-profile-data',$arr,compact('user'));
+    }
+
+
+>>>>>>> cc2706dbf29550eff422d798a6358be77d90a06b
 
     public function getProfile($name)
     {

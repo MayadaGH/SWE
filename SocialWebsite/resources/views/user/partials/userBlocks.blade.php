@@ -1,6 +1,16 @@
-<div >
-    <a  href="{{route('profile.index' , ['name' => $user->name])}}" style="margin:3%;">
-        <img  alt="{{ $user->getNameOrEmail()}} " src="{{ $user->getImageUrl() }}" style="width:20%;">
+
+<div class="col-md-3 mb-4">
+    <div class="card">
+    <a href="{{route('profile.index' , ['id' => $user->id])}}" >
+      <img src="{{asset($user->profile_photo)}}" class="card-img-top" alt="...">
     </a>
-    <a href="{{route('profile.index' , ['name' => $user->name])}}">{{ $user->getNameOrEmail()}}</a>
-</div>
+      <div class="card-body">
+        <h5 class="card-title">{{$user->name}}</h5>
+        <p class="card-text">
+          <b>Gender: </b> {{$user->genderName}}<br>
+          <b>Age:</b> {{$user->age}}<br>
+          <b>About: </b> {{str_limit($user->autobio, 40)}}<br>
+        </p>
+      </div>
+    </div>
+  </div>

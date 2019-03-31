@@ -82,19 +82,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pages(){
       return $this->hasMany(Page::class);
     }
-    public function getName()
+    /*public function getName()
     {
         if($this->name)
-        {
+
             return "{$this->name}";
-        }
+
         return null;
-    }
+    }*/
     public function getNameOrEmail()
     {
-        return $this->getName() ?: $this->email;
+        return $this->name ?: $this->email;
     }
-    public function getImageUrl(){
+    public function getImage(){
         return asset($this->profile_photo);
     }
 

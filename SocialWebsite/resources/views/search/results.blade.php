@@ -1,21 +1,34 @@
 @extends('layouts.app')
 @section('content')
-    <h3> Your Search For '{{ Request::input('q')}}'</h3>
-    @if(!$users->count())
+    <div class="container">
+        <h3> Your Search For '{{ Request::input('q')}}'</h3>
 
-        <p>No Results Found , Sorry not Sorry :P</p>
+        @if(!$users->count() && !$pages->count())
 
-    @else
+            <p>No Results Found , Sorry not Sorry :P</p>
 
-        <div >
+
+        @elseif($users->count())
             <div >
-                @foreach($users as $user)
+                <div >
+                    @foreach($users as $user)
 
-                    @include('user/partials/userBlocks')
+                        @include('user/partials/userBlocks')
 
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
 
-    @endif
+        @elseif($pages->count())
+            <div >
+                <div >
+                    @foreach($pages as $page)
+
+                        @include('user/partials/pagesBlocks')
+
+                    @endforeach
+                </div>
+            </div>
+        @endif
+    </div>
 @endsection
