@@ -28,7 +28,10 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-
+    {{-- profile settings sources --}}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
 <body>
@@ -59,16 +62,30 @@
                         </div>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{url('/profile/settings')}}"><i class="fas fa-user-alt"></i> Profile</a>
+                        <a class="nav-link" href="{{route('restore-profile-data')}}"><i class="fas fa-user-alt"></i> Profile</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-search"></i> Search</a>
+                          <a class="nav-link" href="{{route('Restore-View-Settings-Data')}}"><i class="fas fa-users-cog"></i> Settings</a>
                       </li>
+
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-phone"></i> Contact</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> About</a>
+                      </li>
+
+                      <li class="nav-item" >
+                        <form action="{{route('search.results')}}" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q"
+                                placeholder="Search For..."> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="fas fa-search"></span>
+                                </button>
+                                </span>
+                            </div>
+                        </form>
                       </li>
                     </ul>
 
