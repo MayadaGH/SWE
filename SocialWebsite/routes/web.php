@@ -34,7 +34,7 @@ Route::resource('page', 'Page\PageController');
 // Route::delete('pages/{page}', 'Page\PageController@destroy');
 //=======
 Route::get('/home', 'HomePostController@index')->name('home');
-
+Route::get('/post/{id}','SinglePostController@index'); 
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
 Route::post('/DeletePost','HomePostController@delete')->name('home-post.delete');
