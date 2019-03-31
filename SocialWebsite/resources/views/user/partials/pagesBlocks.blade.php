@@ -1,6 +1,9 @@
-<div >
-    <a  href="{{route('page.index' , ['id' => $page->id])}}" style="margin:3%;">
-        <a href="{{route('page.index' , ['id' => $page->id])}}">{{ $user->getName()}}</a>
-    </a>
 
-</div>
+<div class="col-md-3 mb-4">
+        <div class="card">
+        <a href="{{route('page.index' , ['id' => $page->id])}}" ></a>
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{route('page.index' , ['id' => $page->id])}}">{{ $page->page_name}}</a></h5>
+          </div>
+        </div>
+      </div>
