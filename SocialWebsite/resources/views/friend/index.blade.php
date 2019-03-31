@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <h1>Friends Request</h1>
-  <a href="{{route('user-friend.create')}}" class="btn btn-info text-white">Add Friends</a>
+  Looking for a new friend? Search for <a href="{{route('user-friend.create')}}" class="btn btn-info text-white">Potential Friends?</a>
   <div class="row">
   @foreach($friends as $friend)
   @php
