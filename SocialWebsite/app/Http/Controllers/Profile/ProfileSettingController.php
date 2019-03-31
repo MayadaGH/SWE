@@ -14,7 +14,7 @@ class ProfileSettingController extends Controller
 {
     public function index()
     {   $user = User::find(Auth::id());
-        $message="index";
+        $message="";
         return view('/profile/settings',compact("user","message"));
     }
     public function updateprofile(Request $request)
