@@ -49,6 +49,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      @auth
                       <li class="nav-item">
                         <a class="nav-link active" href="{{url('home')}}"><i class="fas fa-home"></i> Home</a>
                       </li>
@@ -88,6 +89,7 @@
                             </div>
                         </form>
                       </li>
+                      @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
