@@ -24,7 +24,7 @@ Route::resource('pagePost', 'Page\PagePostController');
 
 
 Route::get('/home', 'HomePostController@index')->name('home');
-Route::get('/post/{id}','SinglePostController@index');
+Route::get('/post/{id}','SinglePostController@index')->name('home-posts.single');
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
 Route::post('/CreatePost','HomePostController@store')->name('home-post.store');
 Route::post('/DeletePost','HomePostController@delete')->name('home-post.delete');

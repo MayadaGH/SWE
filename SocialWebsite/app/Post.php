@@ -20,7 +20,7 @@ class Post extends Model
     {
     return $this->hasMany('App\Like');
     }
-    public function page_post(){
+   /*  public function page_post(){
       return $this->hasMany('App\PagePost');
-    }
+    } */
 }

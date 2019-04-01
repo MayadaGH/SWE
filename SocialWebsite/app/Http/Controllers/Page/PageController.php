@@ -51,7 +51,7 @@ class PageController extends Controller
         $attr = request(['page_name', 'description']);
         $attr['user_id'] = auth()->id();
         if($page = Page::create($attr)){
-          return redirect(route('page.show', $page->id))->with('success', 'Successfuly created page');
+          return redirect(route('page.show', $page))->with('success', 'Successfuly created page');
         }else{
           return redirect(route('page.create'))->with('error', 'Failed to create a new page.');
         }
@@ -64,7 +64,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
-    {
+    {   
+     
         return view('/page/show_page', compact('page'));
     }
 

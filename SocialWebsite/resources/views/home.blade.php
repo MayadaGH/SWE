@@ -59,7 +59,9 @@
         <div class="clearfix"></div>
         <div class="text-center">
           <br>
+          <a href="{{route('home-posts.single',[$art->id])}}">
           <img src="/image/{{$art->image}}" class="img-thumbnail" style="margin-top:-20px;">
+          </a> 
         </div>
         <div class="caption">
 
