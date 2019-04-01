@@ -54,7 +54,7 @@
                         <a class="nav-link active" href="{{url('home')}}"><i class="fas fa-home"></i> Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{url('CreatePost')}}"><i class="fas fa-file-alt"></i> Posts</a>
+                        <a class="nav-link" href="{{url('CreatePost')}}"><i class="fas fa-file-alt"></i> Creat Posts</a>
                       </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-newspaper"></i> Pages</a>
