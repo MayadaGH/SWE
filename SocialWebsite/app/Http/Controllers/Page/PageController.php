@@ -64,8 +64,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
-    {   
-     
+    {
+
         return view('/page/show_page', compact('page'));
     }
 
@@ -99,7 +99,7 @@ class PageController extends Controller
         ]);
         $page->update(request(['page_name', 'description']));
 
-        return redirect('/pages/'.$page['id']);
+        return redirect(route('page.index'));
     }
 
     /**
@@ -111,7 +111,7 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         if($page->user_id == auth()->id()){
-          foreach($page->pagePost as $page_post){
+          foreach($page->page_post as $page_post){
             $post = Post::findOrFail($page_post->post_id);
             $post->delete();
           };

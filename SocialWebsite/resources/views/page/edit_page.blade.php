@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<form method="POST" action="/pages/{{ $page['id'] }}">
+<form method="POST" action="{{ route('page.update', $page['id']) }}">
   @csrf
   @method('PATCH')
   <div class="form-group">
