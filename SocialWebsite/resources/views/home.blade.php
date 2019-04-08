@@ -7,7 +7,7 @@
 
    		   @foreach($post as $art)
          @if(!$art->for_page)
-        <div style="background-color: #f2f2f2;" class="col-md-8 col-md-offset-2">
+        <div style="background-color: #f2f2f2;" class="col-md-8 col-md-offset-2 mb-4">
           <div style=" font-size: 22px;">
           <a href="{{ route('user-profile-data', ['id'=>$art->user_id]) }}" >
 
