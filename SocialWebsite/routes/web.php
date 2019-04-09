@@ -53,3 +53,8 @@ Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile
 Route::get('/user/{name}','Profile\profileController@getProfile')->name('profile.index');
 
+Route::get('/admin','HomeAdminController@index')->name('admin.dashboard');
+Route::get('/usertable','UserTableController@index')->name('users-table');
+Route::post('/delete_user','UserTableController@delete')->name('user-table.delete');
+Route::post('/edit_profile','UserTableController@show')->name('user-table.edit');
+

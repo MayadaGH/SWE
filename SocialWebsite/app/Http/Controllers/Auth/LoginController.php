@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -25,7 +25,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function authenticated()
+    {
+    if (Auth::user()->admin == 0) {
+        return redirect()->route('admin.dashboard');
+    }
+    
+     return redirect('/home');
+    }
 
     /**
      * Attempt to log the user into the application.
