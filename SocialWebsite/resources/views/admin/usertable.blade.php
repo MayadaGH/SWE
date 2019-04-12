@@ -81,7 +81,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="{{route('users-table')}}">Users Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="{{route('home')}}">Admin Table</a></li>
+                            <li><i class="fa fa-table"></i><a href="{{route('admins-table')}}">Admin Table</a></li>
                           
                         </ul>
                     </li>
@@ -92,7 +92,7 @@
                                 <i class="menu-icon fa fa-th"></i>
                                 <a href="{{route('home')}}">Add User Form</a>
                             </li> 
-                            
+                           
                         </ul>
                     </li>
 
@@ -162,8 +162,9 @@
                 </div>
             </div>
 
-        </header>
+        </header><!-- /header -->
         <!-- Header-->
+
 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">

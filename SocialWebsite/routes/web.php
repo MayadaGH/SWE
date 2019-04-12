@@ -56,6 +56,10 @@ Route::get('/user/{name}','Profile\profileController@getProfile')->name('profile
 Route::get('/admin','HomeAdminController@index')->name('admin.dashboard');
 Route::get('/usertable','UserTableController@index')->name('users-table');
 Route::post('/delete_user','UserTableController@delete')->name('user-table.delete');
+Route::post('/delete_admin','AdminTableController@delete')->name('admin-table.delete');
 Route::post('/edit_profile/{id}','UserTableController@show')->name('user-table.edit');
+Route::post('/edit_profileAdmin/{id}','AdminTableController@show')->name('admin-table.edit');
 Route::post('/edit_user_profile/{id}','UserTableController@edit')->name('usertable-edituser');
+Route::post('/edit_user_profile/{id}','AdminTableController@edit')->name('admintable-edituser');
+Route::get('/admintable','AdminTableController@index')->name('admins-table');
 
