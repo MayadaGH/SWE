@@ -170,8 +170,8 @@
     <div class="row">
   		<div class="col-sm-9">
             <div class="tab-content">
-                    <div class="tab-pane active" id="home">
-                            <form class="form" action="{{route('update-profile-data')}}" method="POST" id="registrationForm" enctype="multipart/form-data">
+                    <div class="tab-pane active" id="home"> 
+                            <form class="form" action="{{route('usertable-edituser',['id'=>$user->id])}}" method="POST" id="registrationForm" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 <div class="form-group row">{{--Name --}}
                                         <div class="input-group">
@@ -196,9 +196,9 @@
                                 </div>
                                                          
 
-                                <div class="form-group">{{--Name --}}
-
-                                    <div class="col-xs-6">
+                                <div class="form-group row">{{--Name --}}
+                                
+                                    <div class="col-md-6">
                                            
                                             
                                             <label for="firstname"><h4>Name @if ($errors->has('firstname')) <strong class="text-danger">{{ $errors->first('firstname') }}</strong> @endif</h4></label>
@@ -206,9 +206,9 @@
                                         <input type="text" class="form-control  @if ($errors->has('firstname')) border border-danger @endif" name="firstname" id="firstname" placeholder="first-name" title="enter your first name if any." value="{!!$user->name; !!}">
                                     </div>
                                 </div>
-                                <div class="form-group">{{--DateofBirth --}}
+                                <div class="form-group row">{{--DateofBirth --}}
 
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="email"><h4>Date of Birth @if ($errors->has('dop')) <strong class="text-danger">{{ $errors->first('dop') }}</strong> @endif</h4></label>
                                             <input type="text" value="{!! $user->dob; !!}" class=" form-control {{ $errors->has('dob') ? ' is-invalid' : '' }}  @if ($errors->has('dop')) border border-danger @endif" name="dop" id="email" required>
                                         </div>
@@ -222,31 +222,31 @@
                                         </span>
                                     @endif
                                 </div> --}}
-                                <div class="form-group">{{--Email --}}
+                                <div class="form-group row">{{--Email --}}
 
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="email"><h4>Email @if ($errors->has('email')) <strong class="text-danger">{{ $errors->first('email') }}</strong>@endif</h4></label>
                                             <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="{!! $user->email; !!}">
                                         </div>
                                 </div>
-                                <div class="form-group">{{--Website --}}
+                                <div class="form-group row">{{--Website --}}
 
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="email"><h4>Website @if ($errors->has('Website')) <strong class="text-danger">{{ $errors->first('Website') }}</strong>@endif</h4></label>
                                             <input type="text" class="form-control" name="Website" id="email" placeholder="your Bio" title="enter your email." value="{!! $user->website; !!}">
                                         </div>
                                 </div>
 
-                                <div class="form-group">{{--About --}}
+                                <div class="form-group row">{{--About --}}
 
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="email"><h4>About you @if ($errors->has('Bio')) <strong class="text-danger">{{ $errors->first('Bio') }}</strong>@endif</h4></label>
                                             <input type="text" class="form-control" name="Bio" id="email" placeholder="your Bio" title="enter your email." value="{!! $user->autobio; !!}">
                                         </div>
                                 </div>
-                                <div class="form-group">{{--Date ofBirth --}}
+                                <div class="form-group row">{{--Date ofBirth --}}
 
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="email"><h4>Country</h4></label>
                                             <select id="country" name="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
                                                     <option value="">Select Country</option>
@@ -256,9 +256,9 @@
                                             </select>
                                         </div>
                                 </div>
-                                <div class="form-group">{{--Gender--}}
+                                <div class="form-group row">{{--Gender--}}
                                        
-                                        <div class="col-xs-6">
+                                        <div class="col-md-6">
                                             <label for="gender" ><h4>Gender</h4></label>
                                             <select id="gender" name="gender" class="form-control" required>
                                               <option value="M">Male</option>
@@ -267,30 +267,30 @@
                                             
                                         </div>
 
-                                    {{--     <div class="col-xs-6">
+                                    {{--     <div class="col-md-6">
                                             <label for="email"><h4>Gender</h4></label>
                                             <input type="text" class="form-control" name="Bio" id="email" placeholder="your Bio" title="enter your email." value="{!! Auth::user()->email; !!}">
                                              </div> --}}
                                 </div>
 
-                                <div class="form-group">{{--Old password --}}
+                                <div class="form-group row ">{{--Old password --}}
                                     
-                                    <div class="col-xs-6">
+                                    <div class="col-md-6">
                                         <label for="old-password"><h4>Old Password @if ($errors->has('Oldpassword')) <strong class="text-danger">{{ $errors->first('Oldpassword') }} @endif</h4></label>
                                         <input type="password" class="form-control" name='Oldpassword'id="old-password" placeholder=" enter old password " title="enter your old password." >
                                     </div> 
                                 </div>
 
-                                <div class="form-group">{{--New password --}}
+                                <div class="form-group row ">{{--New password --}}
 
-                                    <div class="col-xs-6">
+                                    <div class="col-md-6">
                                         <label for="new-password"><h4>New Password  @if ($errors->has('NewPassword')) <strong class="text-danger">{{ $errors->first('NewPassword') }} @endif</h4></label>
                                         <input type="password" class="form-control" name="NewPassword" id="password" placeholder="enter new password" title="enter your new password." >
                                     </div>
                                 </div>
 
-                                <div class="form-group"> {{-- save button --}}
-                                    <div class="col-xs-6">
+                                <div class="form-group row "> {{-- save button --}}
+                                    <div class="col-md-6">
                                             <br>
                                             <br>
                                             <button class="btn btn-lg btn-succcess btn btn-light" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>

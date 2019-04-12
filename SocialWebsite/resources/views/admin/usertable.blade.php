@@ -178,6 +178,7 @@
                                   <th scope="col">Name</th>
                                   <th scope="col">Email</th>
                                   <th scope="col">Gender</th>
+                                  <th scope="col">Country</th>
                                   <th scope="col">created_at</th>
                               
                                 </tr>
@@ -193,6 +194,7 @@
                                   <td>{{$user->name}}</td>
                                   <td>{{$user->email}}</td>
                                   <td>{{$user->gender}}</td>
+                                  <td>{{$user->country}}</td>
                                   <td>{{$user->created_at}}</td>
                                    <td> 
                                     <form action="{{route('user-table.delete')}}" method="POST">
@@ -200,9 +202,9 @@
                                     <button type="submit" name="Delete" class="btn btn-danger"> Delete </button>
                                     <input type="hidden" value="{{$user->id}}" name="id">
                                     </form>
-                                  </td>
+                                  </td> 
                                   <td> 
-                                    <form action="{{route('user-table.edit')}}" method="Post">
+                                    <form action="{{route('user-table.edit',['id'=>$user->id])}}" method="Post">
                                        @csrf
                                     <button type="submit" name="edit" class="btn btn-primary"> Edit </button>
                                     <input type="hidden" value="{{$user->id}}" name="id">
