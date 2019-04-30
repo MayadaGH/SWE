@@ -20,6 +20,10 @@ class Post extends Model
     {
     return $this->hasMany('App\Like');
     }
+    public function comment()
+    {
+    return $this->hasMany('App\Comment');
+    }
    /*  public function page_post(){
       return $this->hasMany('App\PagePost');
     } */
