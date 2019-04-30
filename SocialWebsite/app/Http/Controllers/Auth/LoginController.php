@@ -30,8 +30,8 @@ class LoginController extends Controller
     if (Auth::user()->admin == 1) {
         return redirect()->route('admin.dashboard');
     }
-    
-     return redirect('/home');
+
+     return redirect('/timeline');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-   
+
     /**
      * Create a new controller instance.
      *

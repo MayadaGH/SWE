@@ -21,7 +21,7 @@ Auth::routes(['verify' => true]);
 
 Route::resource('page', 'Page\PageController');
 Route::resource('pagePost', 'Page\PagePostController');
-
+Route::resource('timeline', 'Timeline\TimelineController');
 
 Route::get('/home', 'HomePostController@index')->name('home');
 Route::get('/post/{id}','SinglePostController@index')->name('home-posts.single');
@@ -44,10 +44,10 @@ Route::resource('/user-friend', 'UserFriendController')->except(['edit']);
 
 //Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
 ////<<<<<<< HEAD
-Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view 
+Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
 Route::get('/profile','Profile\ProfileController@index')->name('restore-profile-data');//this route call function to bring auth user data
-Route::get('/profile/{id}','Profile\OtherUsersProfileController@index')->name('user-profile-data'); //this route to bring another user data and show it in profile data 
-Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to 
+Route::get('/profile/{id}','Profile\OtherUsersProfileController@index')->name('user-profile-data'); //this route to bring another user data and show it in profile data
+Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
 //Search Route
 Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile
@@ -62,4 +62,3 @@ Route::post('/edit_profileAdmin/{id}','AdminTableController@show')->name('admin-
 Route::post('/edit_user_profile/{id}','UserTableController@edit')->name('usertable-edituser');
 Route::post('/edit_user_profile/{id}','AdminTableController@edit')->name('admintable-edituser');
 Route::get('/admintable','AdminTableController@index')->name('admins-table');
-
