@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
 use DB ;
-class UserTableController extends Controller
+class AdminTableController extends Controller
 {
     public function index()
     {
-        $users = User::all()->where('admin',0);
+        $users = User::all()->where('admin',1);
         $arr = array('users' =>$users);
-        return view('admin.usertable',$arr);
+        return view('admin.admintable',$arr);
     }
     public function delete(Request $request)
     {
@@ -19,7 +20,7 @@ class UserTableController extends Controller
         DB::table('users')
         ->where('id',$request->id)
         ->delete();
-        return redirect(route('users-table'));
+        return redirect(route('admins-table'));
 
     }
     public function show(Request $request)
@@ -65,11 +66,11 @@ class UserTableController extends Controller
                     $user->autobio =$request->input('Bio');
                     $user->save();
                     $message='Data Is saved Successfully';
-                    return redirect(route('users-table'));
+                    return redirect(route('admins-table'));
             }
             elseif($request->input('NewPassword')==null&&!Hash::check($request->input('Oldpassword'),$user->password))
             {       $message='you entered a wrong password  ';
-                    return redirect(route('users-table'));
+                    return redirect(route('admins-table'));
                 // return view('/profile/settings')->withErrors('OldPassword', 'Wrong Paswword');
                 // return Redirect::back()->withErrors('OldPassword', 'Wrong Paswword');
             }
@@ -96,7 +97,7 @@ class UserTableController extends Controller
             elseif($request->input('NewPassword')!=null&&!Hash::check($request->input('Oldpassword'),$user->password))
         {
             $message='Wrong Password';
-                    return redirect(route('users-table')); 
+                    return redirect(route('admins-table')); 
             // return  $request->input();
             // return Redirect::back()->withErrors('OldPassword', 'Wrong Paswword');
         }

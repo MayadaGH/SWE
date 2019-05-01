@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Like;
+use App\User;
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,7 @@ class HomePostController extends Controller
         $image             = $request->file('image');
         $new_name          = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path("image"),$new_name);
-       
+
         $post->image    = $new_name ;
         $post->save();
         return redirect(route('home'));
@@ -38,7 +39,8 @@ class HomePostController extends Controller
 
     public function index()
     {
-        $post = Post::all();
+        // $post = Post::all();
+        $post = User::findOrFail(auth()->id())->post;
         $arr = array('post' =>$post);
         return view('home',$arr);
     }
@@ -54,8 +56,8 @@ class HomePostController extends Controller
     }
     public function edit(Request $request)
     {
-        $post = Post::find($request->input('post_id')); 
-        $post->body = $request->input('body'); 
+        $post = Post::find($request->input('post_id'));
+        $post->body = $request->input('body');
         $post->save();
         return redirect(route('home'));
 

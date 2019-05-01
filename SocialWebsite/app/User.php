@@ -49,9 +49,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
     return $this->hasMany('App\Like');
     }
+<<<<<<< HEAD
     public function pageslikes()
     {
     return $this->hasMany('App\PagesLikes');
+=======
+    public function comment()
+    {
+    return $this->hasMany('App\Comment');
+>>>>>>> 430b68d0b5f580084b4243f7126793ccda68d104
     }
     public function getGenderNameAttribute(){
       return ($this->gender == 'M'? 'Male' : 'Female');
