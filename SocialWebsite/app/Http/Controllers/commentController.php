@@ -16,7 +16,7 @@ class commentController extends Controller
             'comment' => 'required|max:225'
         ]);
         $comment = new comment;
-        $comment->comment = $request->comment;
+        $comment->body = $request->comment;
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $request->post_id;
         $comment->save();
