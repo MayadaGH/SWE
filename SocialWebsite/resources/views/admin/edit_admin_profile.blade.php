@@ -88,10 +88,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li>
-                                <i class="menu-icon fa fa-th"></i>
-                                <a href="{{route('home')}}">Add User Form</a>
-                            </li> 
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('show_admin_form')}}">Add Admin</a></li>
+
                            
                         </ul>
                     </li>
@@ -99,14 +97,7 @@
                 
 
                    
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('home')}}">Register</a></li>
-                          
-                        </ul>
-                    </li>
+              
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -171,7 +162,7 @@
   		<div class="col-sm-9">
             <div class="tab-content">
                     <div class="tab-pane active" id="home"> 
-                            <form class="form" action="{{route('admintable-edituser',['id'=>$user->id])}}" method="POST" id="registrationForm" enctype="multipart/form-data">
+                            <form class="form" action="{{route('admintable-edituser',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 <div class="form-group row">{{--Name --}}
                                         <div class="input-group">

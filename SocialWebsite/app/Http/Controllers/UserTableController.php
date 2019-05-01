@@ -25,7 +25,7 @@ class UserTableController extends Controller
     public function show(Request $request)
     {   
         $user = DB::table('users')->where('id',$request->id)->first();
-        return view('admin.edit_user_profile',compact('user'));       
+        return view('admin.edit_admin_profile',compact('user'));       
     }
     public function edit(Request $request,$id)
     {        
