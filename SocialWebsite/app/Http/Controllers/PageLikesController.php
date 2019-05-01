@@ -14,7 +14,7 @@ class PageLikesController extends Controller
    {
     
      $user_id = Auth::user()->id;
-    /*
+    
     $result=DB::table('Pages_Likes')
     ->where("page_id",$request->page_id)
     ->where('owner_id',$request->owner_id)->first();
@@ -46,7 +46,7 @@ class PageLikesController extends Controller
       ->where('owner_id',$request->owner_id)
       ->update(['like'=> 1] );
      }
-      */
-      return response()->json([$request->all()],200);
+     return response()->json($response,200);
+      /*return response()->json([$request->all()],200);  */
     }
 }
