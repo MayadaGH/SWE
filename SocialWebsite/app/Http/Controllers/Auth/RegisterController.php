@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/timeline';
 
     /**
      * Create a new controller instance.
@@ -103,6 +103,6 @@ class RegisterController extends Controller
             'autobio' => $data['autobio']
         ]);
 
-      
+
     }
 }
