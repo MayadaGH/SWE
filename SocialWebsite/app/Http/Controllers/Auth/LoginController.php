@@ -27,11 +27,11 @@ class LoginController extends Controller
      */
     protected function authenticated()
     {
-    if (Auth::user()->admin == 0) {
+    if (Auth::user()->admin == 1) {
         return redirect()->route('admin.dashboard');
     }
-    
-     return redirect('/home');
+
+     return redirect('/timeline');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-   
+
     /**
      * Create a new controller instance.
      *

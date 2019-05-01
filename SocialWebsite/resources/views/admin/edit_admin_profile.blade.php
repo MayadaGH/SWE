@@ -162,7 +162,7 @@
   		<div class="col-sm-9">
             <div class="tab-content">
                     <div class="tab-pane active" id="home"> 
-                            <form class="form" action="{{route('usertable-edituser',['id'=>$user->id])}}" method="POST" id="registrationForm" enctype="multipart/form-data">
+                            <form class="form" action="{{route('admintable-edituser',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 <div class="form-group row">{{--Name --}}
                                         <div class="input-group">
