@@ -33,5 +33,8 @@ class Page extends Model
     public function page_post(){
       return $this->hasMany('App\PagePost');
     }
+    public function pageslikes(){
+      return $this->hasMany('App\PagesLikes');
+    }
 
 }
