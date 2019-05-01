@@ -94,27 +94,29 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-3 col-md-6">
-            @foreach($pot->comments as $comment)
-                <div class="panel panel-default" style="margin:0; border-radius:0;">
-                    <div class="panel-body">
-                        {{$comment->comment}}
-                        <div class="pull-right">
-                            <small>Commented by {{ $comment->user->username }}</small>
+        <div class="col-sm-12 col-md-12">
+            @if($post->comments->count())
+                @foreach($post->comments as $comment)
+                    <div class="panel panel-default" style="margin:0; border-radius:0;">
+                        <div class="panel-body">
+                            <p>{{$comment->body}}</p>
+                            <div class="pull-right">
+                                <small>Commented by {{ $comment->user->name }}</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
             @if (Auth::check())
                 <div class="panel panel-default" style="margin:0; border-radius:0;">
                     <div class="panel-body">
                         <form action="{{ url('/comment') }}" method = "POST" style="display:flex;">
                             {{ csrf_field() }}
-                            <input type="hidden" name="post_id" value="{{ $post_id }}">
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
                             <input type="text" name="comment" placeholder="write your Comment here...">
                             <input type="submit" value="comment" class="btn btn-primary" style="border-radius:0;">
                         </form>
-                        @if (count($errors) > 0)
+                        {{--@if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert">&times;</a>
                                 <ul>
@@ -124,7 +126,7 @@
                                 </ul>
                             </div >
                         @endif
-                        {{-- @if (Session::has('success'))
+                         @if (Session::has('success'))
                             <div class="alert alert-success">
                                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                                     {{Session::get('success')}}
