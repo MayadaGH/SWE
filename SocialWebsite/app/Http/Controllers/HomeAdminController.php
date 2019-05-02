@@ -8,16 +8,17 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
+use App\Custom\AdminFacade;
 class HomeAdminController extends Controller
 {
     public function  index(){
-    return view('admin.dashboard'); 
+    return view('admin.dashboard');
     }
     public function show(){
     return view('admin.add_admin');
     }
     public function add(Request $data){
-   
+
         $data->validate( [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -29,21 +30,15 @@ class HomeAdminController extends Controller
             'profile_photo' => ['nullable', 'string'],
             'autobio' => ['string']
         ]);
-        User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'dob' => $data['dob'],
-            'gender' => $data['gender'],
-            'country' => $data['country'],
-            'website' => $data['website'],
-            'profile_photo' => (isset($data['profile_photo']) ? $data['profile_photo'] : 'nophoto.jpg' ),
-            'autobio' => $data['autobio']
-        ]);
-        User::where('email', $data['email'])
-        ->update(['admin' => 1]);
-        return view('admin.dashboard'); 
-     
+
+        $admin = new User;
+
+        $adminFacade = new AdminFacade($admin);
+        $adminFacade->createAdmin();
+
+
+        return view('admin.dashboard');
+
     }
-    
+
 }
