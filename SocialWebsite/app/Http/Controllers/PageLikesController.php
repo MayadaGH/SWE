@@ -18,7 +18,7 @@ class PageLikesController extends Controller
     $result=DB::table('Pages_Likes')
     ->where("page_id",$request->page_id)
     ->where('owner_id',$request->owner_id)->first();
-
+     
       if(!$result) 
      { 
        $new_Page_like = new PagesLikes();
@@ -45,8 +45,10 @@ class PageLikesController extends Controller
       ->where("page_id",$request->page_id)
       ->where('owner_id',$request->owner_id)
       ->update(['like'=> 1] );
+      $is_like = 1 ; 
      }
-     return response()->json($response,200);
+     $response=array('is_like' =>$is_like );
+          return response()->json($response,200);
       /*return response()->json([$request->all()],200);  */
     }
 }

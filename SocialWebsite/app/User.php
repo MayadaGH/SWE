@@ -52,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pageslikes()
     {
     return $this->hasMany('App\PagesLikes');
-    
+    }
     public function comment()
     {
     return $this->hasMany('App\Comment');
