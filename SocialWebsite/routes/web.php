@@ -21,6 +21,13 @@ Auth::routes(['verify' => true]);
 /////////////////////////////////////////Pages Routes///////////////////////////////////////
 Route::resource('page', 'Page\PageController');
 Route::resource('pagePost', 'Page\PagePostController');
+<<<<<<< HEAD
+Route::post('/pagelikes','PageLikesController@StorePagesLikes')->name("pageslikes.store");
+
+/////////////////////////////////////////Posts Routes///////////////////////////////////////
+Route::resource('timeline', 'Timeline\TimelineController');
+
+=======
 // <<<<<<< HEAD
 Route::post('/pagelikes','PageLikesController@StorePagesLikes')->name("pageslikes.store");
 
@@ -29,6 +36,7 @@ Route::post('/pagelikes','PageLikesController@StorePagesLikes')->name("pageslike
 Route::resource('timeline', 'Timeline\TimelineController');
 
 // >>>>>>> 430b68d0b5f580084b4243f7126793ccda68d104
+>>>>>>> fc7de589fcf8af6d5ecc742539bc766c3c3ca749
 Route::get('/home', 'HomePostController@index')->name('home');
 Route::get('/post/{id}','SinglePostController@index')->name('home-posts.single');
 Route::get('/CreatePost','HomePostController@create')->name('home-post.create');
@@ -50,12 +58,19 @@ Route::resource('/user-friend', 'UserFriendController')->except(['edit']);
 
 Route::get('/profile/settings','Profile\ProfileController@index');
 //Route::get('/profile/settings','Profile\ProfileSettingController@updateprofile');
+<<<<<<< HEAD
+
+Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view 
+=======
 // <<<<<<< HEAD
 Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
+>>>>>>> fc7de589fcf8af6d5ecc742539bc766c3c3ca749
 Route::get('/profile','Profile\ProfileController@index')->name('restore-profile-data');//this route call function to bring auth user data
 Route::get('/profile/{id}','Profile\OtherUsersProfileController@index')->name('user-profile-data'); //this route to bring another user data and show it in profile data
 Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
+=======
 // =======
 ////<<<<<<< HEAD
 Route::get('/profile/settings','Profile\ProfileSettingController@index')->name("Restore-View-Settings-Data");//this show the settings view and send user data to the profile settings view
@@ -63,6 +78,7 @@ Route::get('/profile','Profile\ProfileController@index')->name('restore-profile-
 Route::get('/profile/{id}','Profile\OtherUsersProfileController@index')->name('user-profile-data'); //this route to bring another user data and show it in profile data
 Route::post('/profile/settings','Profile\ProfileSettingController@updateprofile')->name('update-profile-data');//send new data from profile settings view to
 // >>>>>>> 430b68d0b5f580084b4243f7126793ccda68d104
+>>>>>>> fc7de589fcf8af6d5ecc742539bc766c3c3ca749
 //Search Route
 Route::get('/search','searchController@getResults')->name('search.results');
 //get user profile

@@ -14,11 +14,11 @@ class PageLikesController extends Controller
    {
     
      $user_id = Auth::user()->id;
-    /*
+    
     $result=DB::table('Pages_Likes')
     ->where("page_id",$request->page_id)
     ->where('owner_id',$request->owner_id)->first();
-
+     
       if(!$result) 
      { 
        $new_Page_like = new PagesLikes();
@@ -39,14 +39,16 @@ class PageLikesController extends Controller
       $is_like = 0 ; 
 
      }
-     else if($result->like==0){
+ /*     else if($result->like==0){
 
       DB::table('Pages_Likes')
       ->where("page_id",$request->page_id)
       ->where('owner_id',$request->owner_id)
       ->update(['like'=> 1] );
-     }
-      */
-      return response()->json([$request->all()],200);
+      $is_like = 1 ; 
+     } */
+     $response=array('is_like' =>$is_like );
+          return response()->json($response,200);
+      /*return response()->json([$request->all()],200);  */
     }
 }

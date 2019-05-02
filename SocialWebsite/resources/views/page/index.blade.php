@@ -17,7 +17,7 @@
           {{-- <a href="" class="btn btn-primary text-light font-weight-bold likebtn">Like</a> --}}
           @php
             $like_count=0;
-            $like_status="btn-outline-primary";
+            $like_status="btn btn-secondary";
             $like_int=0;
           @endphp
           
@@ -27,13 +27,14 @@
                   $like_count++;
                 }
                 if(Auth::check())
-            {
-                if($PageLike->like==1 && $PageLike->owner_id==Auth::user()->id)
                 {
-                  $like_status="btn-primary";
-                  $like_int=1;
+                    if($PageLike->like==1 && $PageLike->owner_id==Auth::user()->id)
+                    {
+                      $like_status="btn btn-primary";
+                      
+                      $like_int=1;
+                    }
                 }
-            }
               @endphp
           @endforeach
 
@@ -41,7 +42,7 @@
             class="pageslikes btn {{$like_status}} text-light font-weight-bold ">
             Like 
             <span class="glyphicon glyphicon-thumbs-up"></span>
-            <b>{{$like_count}}</b>
+            <b><span class="like_count">{{$like_count}}</span></b>
           </button>
 
 
