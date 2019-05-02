@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Custom\Settings;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->share('settings', Settings::getInstance());
         \Schema::enableForeignKeyConstraints();
     }
 }
